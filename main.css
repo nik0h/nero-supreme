@@ -1,0 +1,174 @@
+* {
+	font-family: 'Titillium Web', sans-serif;
+	color: #bbb;
+}
+
+body {
+	background: #111;
+}
+
+:not(input):not(textarea),
+:not(input):not(textarea)::after,
+:not(input):not(textarea)::before {
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+#left {
+	text-align: center;
+	background-image: url("tri.png");
+	height: 100%;
+	width: 160px;
+	position: fixed;
+	z-index: 1;
+  bottom: 0;
+	left: 0;
+	overflow-x: hidden;
+	-webkit-app-region: drag;
+	border-right: solid 1px #333;
+}
+
+#tabHeaders {
+	font-size: 20px;
+	font-weight: bold;
+	padding: 0px 0px 20px 0px;
+	border-color: #bbb;
+}
+
+.users {
+  table-layout: fixed;
+  width: 100%;
+  white-space: nowrap;
+}
+/* Column widths are based on these cells */
+.tasklistcol1 {
+    width: 7%;
+}
+
+.tasklistcol2 {
+    width: 23%;
+}
+
+.tasklistcol3 {
+    width: 10%;
+}
+
+.tasklistcol4 {
+    width: 10%;
+}
+
+.tasklistcol5 {
+    width: 15%;
+}
+
+.tasklistcol6 {
+    width: 20%;
+}
+
+.tasklistcol7 {
+    width: 15%;
+}
+.users td {
+  white-space: nowrap;
+	text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+	background-color: #222;
+	padding: 5px 10px;
+}
+.users th {
+  background-color: #333;
+	text-align: center;
+	padding: 5px 0px;
+}
+.users td,
+.users th {
+	height: 1em;
+	position: relative;
+	left: -2px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #444;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.profileinputs, .taskinputs{
+	background-color: #111;
+	padding-left: 4px;
+	border: 2px solid #555;
+  border-radius: 4px;
+	transition: 0.3s;
+}
+
+.profilebuttons, .taskbuttons{
+	background-color: #222;
+	padding-left: 4px;
+	border: 2px solid #555;
+  border-radius: 4px;
+	text-align: center;
+	transition: 0.3s;
+}
+
+.profileerror, .taskerror{
+	border: 2px solid #A12020;
+	transition: 0.3s;
+}
+
+.profileinputs:disabled, .taskinputs:disabled {
+	background-color: #222;
+}
+
+.tab button {
+		font-weight: bold;
+		width: 160px;
+		color: #aaa;
+		font-size: 20px;
+		letter-spacing: 1px;
+    background-color: inherit;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+		-webkit-app-region: no-drag
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+		border-right: solid 3px #999;
+    background-color:rgba(255, 255, 255, 0.2);
+		-webkit-app-region: no-drag
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+		border-right: solid 5px #999;
+    background-color:rgba(255, 255, 255, 0.1);
+		-webkit-app-region: no-drag
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+		border-radius: 4px;
+		border: solid 1px #555;
+		background-color: #1d1d1d;
+		margin-left: 160px;
+		padding: 1% 1%;
+}

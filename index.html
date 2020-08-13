@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Nero Supreme</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="main.css" />
+		<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+	</head>
+	<body>
+			<div class="tab" id="left">
+				<img src="nero.png" style="width: 85%; padding: 20px 0px;">
+				<button class="tablinks" onclick="openTab(event, 'createTasks')" id="openTasks">Create Tasks</button><br />
+				<button class="tablinks" onclick="openTab(event, 'tasks')" >Tasks</button><br />
+				<button class="tablinks" onclick="openTab(event, 'profiles')">Profiles</button><br />
+				<button class="tablinks" onclick="openTab(event, 'settings')">Settings</button>
+				<div style="position:absolute;bottom:0;left:0;">
+					<button onclick="ipcRenderer.send('showCaptcha', 1);">Captcha</button>
+					<button id="close-btn" onclick="closex()">Exit</button>
+				</div>
+			</div>
+
+			<div id="createTasks" class="tabcontent">
+				<form id="taskform">
+					<div id="taskdiv" style="width: 48%; display:inline-block;vertical-align:top">
+						<div id="tabHeaders">Create Task</div>
+						<div>
+							<input class="taskinputs" id="keywords" style="width: 60%" placeholder="keywords"></input>
+							<select class="taskinputs" id="category" style="width: 33%"><option value="" disabled selected>category</option>
+								<option value="Bags">Bags</option>
+								<option value="Jackets">Jackets</option>
+								<option value="Shorts">Shorts</option>
+								<option value="Sweatshirts">Sweatshirts</option>
+								<option value="Hats">Hats</option>
+								<option value="Accessories">Accessories</option>
+								<option value="Skate">Skate</option>
+								<option value="Shirts">Shirts</option>
+								<option value="Tops/Sweaters">Tops/Sweaters</option>
+								<option value="T-Shirts">T-Shirts</option>
+								<option value="Pants">Pants</option>
+							</select>
+						</div>
+						<div style="padding-top: 10px;">
+							<select class="taskinputs" id="size" style="width: 30.5%"><option value="" disabled selected>size</option>
+																<option value="Any">Any</option>
+                                <option value="" disabled="">Apparel</option>
+                                <option value="Small">Small</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Large">Large</option>
+                                <option value="XLarge">XLarge</option>
+                                <option value="" disabled="">Pants</option>
+                                <option value="6">30</option>
+                                <option value="6">32</option>
+                                <option value="6">34</option>
+                                <option value="6">36</option>
+                                <option value="" disabled="">US Shoes Sizes</option>
+                                <option value="4">4</option>
+                                <option value="4.5">4.5</option>
+                                <option value="5">5</option>
+                                <option value="5.5">5.5</option>
+                                <option value="6">6</option>
+                                <option value="6.5">6.5</option>
+                                <option value="7">7</option>
+                                <option value="7.5">7.5</option>
+                                <option value="8">8</option>
+                                <option value="8.5">8.5</option>
+                                <option value="9">9</option>
+                                <option value="9.5">9.5</option>
+                                <option value="10">10</option>
+                                <option value="10.5">10.5</option>
+                                <option value="11">11</option>
+                                <option value="11.5">11.5</option>
+                                <option value="12">12</option>
+                                <option value="12.5">12.5</option>
+                                <option value="13">13</option>
+                                <option value="13.5">13.5</option>
+                                <option value="14">14</option>
+							</select>
+							<input class="taskinputs" id="color" style="width: 45.5%" placeholder="color"></input>
+							<input class="taskinputs" id="randomcolor" type="checkbox"> random
+						</div>
+					</div>
+					<div id="taskinfodiv" style="padding-left: 10px; display:inline-block; width: 48%;vertical-align:top">
+						<div id="tabHeaders">Instructions</div>
+						Insert your keywords in the format "+box,+logo,-shirt". If you aren't sure about what to input for color, use random.
+					</div>
+				</form>
+				<div style="padding-top: 10px;width: 48%;">
+					<select class="taskinputs" id="taskprofile" style="width: 75.5%"><option value="" disabled selected>-- profiles --</option></select>
+					<button id="createTask" class="taskbuttons" style="width: 23.5%">create task</button>
+				</div>
+			</div>
+
+			<div id="tasks" class="tabcontent">
+				<div style="min-height:400px; height:400px; overflow-y:scroll;" class="profileinputs">
+					<table class="users">
+					  <thead>
+					    <tr>
+								<th class="tasklistcol1">Task #</th>
+								<th class="tasklistcol2">Product</th>
+								<th class="tasklistcol3">Size</th>
+								<th class="tasklistcol4">Color</th>
+								<th class="tasklistcol5">Profile</th>
+								<th class="tasklistcol6">Status</th>
+								<th class="tasklistcol7">Actions</th>
+					    </tr>
+					  </thead>
+					  <tbody id="tasklist">
+					  </tbody>
+					</table>
+				</div>
+			</div>
+
+		  <div id="profiles" class="tabcontent">
+			  <form id="profileform">
+					<div id="shipping" style="width: 48%; display:inline-block;vertical-align:top">
+						<div id="tabHeaders">Shipping Info</div>
+						<div>
+							<input class="profileinputs" id="name" style="width: 97%" placeholder="name"></input>
+						</div>
+						<div style="padding-top: 10px;">
+							<input class="profileinputs" id="address1" style="width: 65%" placeholder="address"></input>
+							<input class="profileinputs" id="address2" style="width: 27%" placeholder="apt, unit, etc"></input>
+						</div>
+						<div style="padding-top: 10px;">
+							<input class="profileinputs" id="city" style="width: 97%" placeholder="city"></input>
+						</div>
+						<div style="padding-top: 10px;">
+							<select class="profileinputs" id="country" style="width: 30%"><option value="" disabled selected>country</option><option value="USA">USA</option><option value="CANADA">CANADA</option></select>
+							<select class="profileinputs" id="province" style="width: 30%"><option value="" disabled selected>state/province</option></select>
+							<input class="profileinputs" id="uszip" style="width: 30%" placeholder="zip"></input>
+							<input class="profileinputs" id="cazip" style="width: 30%" placeholder="zip"></input>
+						</div>
+						<div style="padding-top: 10px;">
+							<input class="profileinputs" id="phone" style="width: 97%" placeholder="tel"></input>
+						</div>
+					</div>
+					<div id="payment" style="padding-left: 10px; display:inline-block; width: 48%;vertical-align:top">
+						<div id="tabHeaders">Payment</div>
+						<div>
+							<input class="profileinputs" id="email" style="width: 97.5%" placeholder="email"></input>
+						</div>
+						<div style="padding-top: 10px;">
+							<input class="profileinputs" id="ccnumber" style="width: 36%" placeholder="number"></input>
+							<select class="profileinputs" id="ccmonth" style="width: 13%"><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option></select>
+							<select class="profileinputs" id="ccyear" style="width: 19%"><option value="2018">2018</option><option value="2019">2019</option><option value="2020">2020</option><option value="2021">2021</option><option value="2022">2022</option><option value="2023">2023</option><option value="2024">2024</option></select>
+							<input class="profileinputs" id="cvv" style="width: 20%" placeholder="CVV"></input>
+						</div>
+					</div>
+				</form>
+				<div id="stuff" style="padding-top: 30px">
+					<div id="saveProfileDiv" style="width: 48%; display:inline-block;vertical-align:top">
+						<div id="tabHeaders">Save Profile</div>
+						<div>
+							<input class="profileinputs" id="profilename" style="width: 75.5%" placeholder="profile name"></input>
+							<button id="saveProfile" class="profilebuttons" style="width: 20.5%">save</button>
+						</div>
+					</div>
+					<div id="loadProfileDiv" style="padding-left: 10px; width: 48%; display:inline-block;vertical-align:top">
+						<div id="tabHeaders">Edit Profile</div>
+						<div>
+							<select class="profileinputs" id="pickprofile" style="width: 56%"><option value="" disabled selected>-- profiles --</option></select>
+							<button id="loadProfile" class="profilebuttons" style="width: 20.5%">edit</button>
+							<button id="deleteProfile" class="profilebuttons" style="width: 20.5%">delete</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="settings" class="tabcontent">
+			  Settings should be set here.
+			</div>
+			<script>
+				require('./app.js');
+	    </script>
+			<script src="ui.js"></script>
+			<script>
+			var {ipcRenderer, remote} = require('electron');
+			function closex(){
+		    ipcRenderer.send('exit', 1);
+		  }
+			</script>
+	</body>
+</html>

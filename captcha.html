@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Nero Supreme</title>
+		<meta charset="utf-8" />
+		<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+		<style>
+		* {
+			font-family: 'Titillium Web', sans-serif;
+			color: #bbb;
+		}
+		body {
+			background: #111;
+		}
+		#cheader {
+			text-align: center;
+			background-image: url("tri.png");
+			height: 40px;
+			width: 100%;
+			position: fixed;
+			z-index: 1;
+			left:0;
+			top:0;
+			overflow-x: hidden;
+			-webkit-app-region: drag;
+			border-bottom: solid 1px #333;
+			font-weight: bold;
+			color: #aaa;
+			font-size: 20px;
+			letter-spacing: 1px;
+		}
+		.closec button {
+				font-weight: bold;
+				height: 40px;
+				color: #aaa;
+				font-size: 20px;
+				letter-spacing: 1px;
+		    background-color: inherit;
+		    border: none;
+				position: fixed;
+				right: 0;
+		    outline: none;
+		    cursor: pointer;
+		    transition: 0.3s;
+				-webkit-app-region: no-drag;
+				border-left: solid 1px #333;
+		}
+		.closec button:hover {
+		    background-color:rgba(255, 255, 255, 0.2);
+				-webkit-app-region: no-drag
+		}
+		.closec button.active {
+		    background-color:rgba(255, 255, 255, 0.1);
+				-webkit-app-region: no-drag
+		}
+		</style>
+	</head>
+	<body>
+			<div class="closec" id="cheader">
+				<div style="display:inline-block;line-height: 40px;">Captcha Harvester</div>
+				<button class="closec" onclick="ipcRenderer.send('hideCaptcha', 1);">✖</button>
+			</div>
+			<div style="margin-top: 40px;text-align: center;"><webview id="foo" src="https://accounts.google.com/ServiceLogin" style="display:inline-flex; width:450px; height:550px" nodeintegration></webview></div>
+			<script>
+				var {ipcRenderer, remote} = require('electron');
+				const webview = document.querySelector('webview')
+
+				ipcRenderer.on('captchaStart', (event, arg) => {
+				  webview.loadURL('https://www.supremenewyork.com');
+					webview.addEventListener('did-finish-load', function() {
+	          webview.loadURL("javascript:const {ipcRenderer} = require('electron');function captchaResponse(str){ipcRenderer.sendToHost(str);location.reload();} var captchaPage = '<form action=\"?\" method=\"POST\" style=\"text-align: center;\"><div class=\"g-recaptcha\" data-size=\"normal\" data-sitekey=\"6LeWwRkUAAAAAOBsau7KpuC9AV-6J8mhw4AjC3Xz\" data-callback=\"captchaResponse\"></form>'; document.body.parentElement.innerHTML = captchaPage;var script = document.createElement('script'); script.src = 'https://www.google.com/recaptcha/api.js?hl=en'; script.type = 'text/javascript'; document.getElementsByTagName('head')[0].appendChild(script);");
+	        });
+				});
+
+				webview.addEventListener('ipc-message', (event) => {
+			    ipcRenderer.send('captcha', event.channel);
+			  })
+	    </script>
+	</body>
+</html>
