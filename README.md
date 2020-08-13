@@ -1,4 +1,4 @@
-# Nero for Supreme
+# ![Nero for Supreme](https://github.com/nik0h/nero-supreme/blob/master/assets/nero.png)
 Nero is an automated checkout tool for Supreme New York, helping users buy limited-release clothing faster than anybody else.
 
 Well, it did. This bot was developed in Fall 2018, and is severely outdated (and a manifestation of terrible coding practices from my early days).
