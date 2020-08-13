@@ -42,9 +42,10 @@ app.on('ready', () => {
       nodeIntegration: true
     }
   });
-  splash.loadURL('file://' + __dirname + '/splash.html');
-  mainWindow.loadURL('file://' + __dirname + '/index.html');
-  captchaWindow.loadURL('file://' + __dirname + '/captcha.html');
+  
+  splash.loadURL('file://' + __dirname + '/html/splash.html');
+  mainWindow.loadURL('file://' + __dirname + '/html/index.html');
+  captchaWindow.loadURL('file://' + __dirname + '/html/captcha.html');
 
   mainWindow.once('ready-to-show', () => {
     splash.destroy();

@@ -3,12 +3,12 @@
 	<head>
 		<title>Nero Supreme</title>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" href="main.css" />
+		<link rel="stylesheet" href="../assets/main.css" />
 		<link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
 	</head>
 	<body>
 			<div class="tab" id="left">
-				<img src="nero.png" style="width: 85%; padding: 20px 0px;">
+				<img src="../assets/nero.png" style="width: 85%; padding: 20px 0px;">
 				<button class="tablinks" onclick="openTab(event, 'createTasks')" id="openTasks">Create Tasks</button><br />
 				<button class="tablinks" onclick="openTab(event, 'tasks')" >Tasks</button><br />
 				<button class="tablinks" onclick="openTab(event, 'profiles')">Profiles</button><br />
@@ -40,7 +40,7 @@
 							</select>
 						</div>
 						<div style="padding-top: 10px;">
-							<select class="taskinputs" id="size" style="width: 30.5%"><option value="" disabled selected>size</option>
+							<select class="taskinputs" id="size" style="width: 30%"><option value="" disabled selected>size</option>
 																<option value="Any">Any</option>
                                 <option value="" disabled="">Apparel</option>
                                 <option value="Small">Small</option>
@@ -75,7 +75,7 @@
                                 <option value="13.5">13.5</option>
                                 <option value="14">14</option>
 							</select>
-							<input class="taskinputs" id="color" style="width: 45.5%" placeholder="color"></input>
+							<input class="taskinputs" id="color" style="width: 40%" placeholder="color"></input>
 							<input class="taskinputs" id="randomcolor" type="checkbox"> random
 						</div>
 					</div>
@@ -170,9 +170,9 @@
 			  Settings should be set here.
 			</div>
 			<script>
-				require('./app.js');
+				require('../js/app.js');
 	    </script>
-			<script src="ui.js"></script>
+			<script src="../js/ui.js"></script>
 			<script>
 			var {ipcRenderer, remote} = require('electron');
 			function closex(){

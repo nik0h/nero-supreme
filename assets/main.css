@@ -17,7 +17,7 @@ body {
 
 #left {
 	text-align: center;
-	background-image: url("tri.png");
+	background-image: url("../assets/tri.png");
 	height: 100%;
 	width: 160px;
 	position: fixed;
