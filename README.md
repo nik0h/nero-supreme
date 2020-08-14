@@ -6,4 +6,4 @@ Well, it did. This bot was developed in Fall 2018, and is severely outdated (and
 Nero was built using the Electron framework. This bot **will not check out** anymore due to changes in Supreme's API, uploaded only as a look into how the requests were formed and verified when checking out products on Supreme's web store during the FW18 season.
 
 ## Usage
-Fixes were made before upload to patch memory leaks and deprecation warnings. Use `npm init` to start the bot after installing all dependencies with `npm install`.
+Fixes were made before upload to patch memory leaks and deprecation warnings. Use `npm start` to start the bot after installing all dependencies with `npm install`.
